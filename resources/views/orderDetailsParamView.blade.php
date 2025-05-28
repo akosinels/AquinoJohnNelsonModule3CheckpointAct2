@@ -1,41 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Transaction Parameter Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-4">
-        <h3>Order Transaction Details (Parameters)</h3>
-        <form>
-            <div class="mb-3">
-                <label for="transNo" class="form-label">Transaction No:</label>
-                <input type="text" class="form-control" id="transNo" value="{{ $transNo }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="orderNo" class="form-label">Order No:</label>
-                <input type="text" class="form-control" id="orderNo" value="{{ $orderNo }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="itemId" class="form-label">Item ID:</label>
-                <input type="text" class="form-control" id="itemId" value="{{ $itemId }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="itemName" class="form-label">Item Name:</label>
-                <input type="text" class="form-control" id="itemName" value="{{ $itemName }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="itemPrice" class="form-label">Price:</label>
-                <input type="text" class="form-control" id="itemPrice" value="{{ $itemPrice }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="quantity" class="form-label">Quantity:</label>
-                <input type="text" class="form-control" id="quantity" value="{{ $quantity }}" readonly>
-            </div>
-        </form>
+@extends('layouts.app')
+
+@section('title', 'Order Transaction Details')
+
+@section('content')
+<div class="bg-dark-bg-secondary rounded-lg shadow-lg p-6">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-dark-text-primary">Order Transaction Details</h2>
+        <div class="flex space-x-2">
+            <a href="/" class="px-4 py-2 text-sm font-medium text-dark-text-secondary hover:text-dark-text-primary transition-colors">
+                Back to Home
+            </a>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
+    <div class="space-y-6">
+        <div class="bg-dark-bg-primary rounded-lg p-4 border border-dark-border">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Transaction No</label>
+                    <div class="text-lg font-medium text-dark-text-primary">{{ $transNo }}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Order No</label>
+                    <div class="text-lg font-medium text-dark-text-primary">{{ $orderNo }}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Item ID</label>
+                    <div class="text-lg font-medium text-dark-text-primary">{{ $itemId }}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Item Name</label>
+                    <div class="text-lg font-medium text-dark-text-primary">{{ $itemName }}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Price</label>
+                    <div class="text-lg font-medium text-dark-text-primary">${{ number_format($itemPrice, 2) }}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Quantity</label>
+                    <div class="text-lg font-medium text-dark-text-primary">{{ $quantity }}</div>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Total Amount</label>
+                    <div class="text-lg font-medium text-dark-text-primary">${{ number_format($itemPrice * $quantity, 2) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

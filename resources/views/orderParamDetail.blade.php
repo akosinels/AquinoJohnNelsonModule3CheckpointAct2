@@ -1,33 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Parameter Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-4">
-        <h3>Order Details (Parameters)</h3>
-        <form>
-            <div class="mb-3">
-                <label for="customerId" class="form-label">Customer ID:</label>
-                <input type="text" class="form-control" id="customerId" value="{{ $customerId }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="customerName" class="form-label">Customer Name:</label>
-                <input type="text" class="form-control" id="customerName" value="{{ $customerName }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="orderNo" class="form-label">Order No:</label>
-                <input type="text" class="form-control" id="orderNo" value="{{ $orderNo }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="orderDate" class="form-label">Date:</label>
-                <input type="text" class="form-control" id="orderDate" value="{{ $orderDate }}" readonly>
-            </div>
-        </form>
+@extends('layouts.app')
+
+@section('title', 'Order Details')
+
+@section('content')
+<div class="bg-dark-bg-secondary rounded-lg shadow-lg p-6">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-dark-text-primary">Order Details</h2>
+        <div class="flex space-x-2">
+            <a href="/" class="px-4 py-2 text-sm font-medium text-dark-text-secondary hover:text-dark-text-primary transition-colors">
+                Back to Home
+            </a>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
+    <div class="space-y-6">
+        <div class="bg-dark-bg-primary rounded-lg p-4 border border-dark-border">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Customer ID</label>
+                    <div class="text-lg font-medium text-dark-text-primary">{{ $customerId }}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Customer Name</label>
+                    <div class="text-lg font-medium text-dark-text-primary">{{ $customerName }}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Order No</label>
+                    <div class="text-lg font-medium text-dark-text-primary">{{ $orderNo }}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-dark-text-secondary mb-1">Date</label>
+                    <div class="text-lg font-medium text-dark-text-primary">{{ $orderDate }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
